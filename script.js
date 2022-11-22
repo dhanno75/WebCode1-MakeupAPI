@@ -1,3 +1,4 @@
+// html elements created using dom
 document.body.innerHTML = `
 <div class="header-container">
   <div class='text-center'>
@@ -8,6 +9,7 @@ document.body.innerHTML = `
   <div class="main-container"></div>
 `;
 
+// Storing the makeup details in a global context variable so that it can be used for searching the data.
 let makeupStore = [];
 
 // Get the makeup details
@@ -26,6 +28,7 @@ const getMakeupDetails = async () => {
 };
 getMakeupDetails();
 
+// Rendering the makeup data
 const renderMakeupProducts = (makeup) => {
   let mainContainer = document.querySelector(".main-container");
   mainContainer.innerHTML += `
@@ -56,6 +59,7 @@ const renderMakeupProducts = (makeup) => {
   `;
 };
 
+// Searching the makeup data
 let search = document.querySelector(".search-field");
 search.addEventListener("keyup", (e) => {
   e.preventDefault();
@@ -69,7 +73,9 @@ search.addEventListener("keyup", (e) => {
         makeup.name.includes(searchField.toLowerCase())
     );
 
-    //
+    if (searchField === null || searchField === "") {
+      getMakeupDetails();
+    }
     if (filteredData.length !== 0) {
       document.querySelector(".main-container").innerHTML = "";
     }
@@ -78,12 +84,14 @@ search.addEventListener("keyup", (e) => {
     }
   } else {
     alert("No such makeup brand found!");
+    document.querySelector(".search-field").value = "";
+    getMakeupDetails();
   }
 });
 
+// Rendering the search data
 const renderSearchData = (makeup, textEntered) => {
   let mainContainer = document.querySelector(".main-container");
-  // mainContainer.innerHTML = "";
   mainContainer.innerHTML += `
   <div class="container">
     <h3 class="brand">${
@@ -118,11 +126,3 @@ const renderSearchData = (makeup, textEntered) => {
   `;
 };
 
-// searchedText = searchedText.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-// let pattern = new RegExp(`${searchedText}`, "gi");
-
-// mainCont.innerHTML = mainCont.textContent.replace(
-//   pattern,
-//   (match) => `<mark>${match}</mark>`
-// );
