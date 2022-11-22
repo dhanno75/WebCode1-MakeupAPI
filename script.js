@@ -73,19 +73,16 @@ search.addEventListener("keyup", (e) => {
         makeup.name.includes(searchField.toLowerCase())
     );
 
-    if (searchField === null || searchField === "") {
-      getMakeupDetails();
-    }
     if (filteredData.length !== 0) {
       document.querySelector(".main-container").innerHTML = "";
     }
+    
     for (let data of filteredData) {
       renderSearchData(data, searchField);
     }
   } else {
     alert("No such makeup brand found!");
-    document.querySelector(".search-field").value = "";
-    getMakeupDetails();
+    window.location.reload();
   }
 });
 
