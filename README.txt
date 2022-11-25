@@ -4,6 +4,6 @@ Copying the data to the local file naming 'makeup.json'  did not help, so I rest
 
 I am taking the data from index 100 to 300 because 1st 100 data has almost no images though I have the solution for it(which I already mentioned)
 
-For the search field, the text is only highlighted if we type the complete word we want to search.
+For the search field, the text is only highlighted for brand name if we type the complete word we want to search. I tried making it work for product name but it is not working.
 
 The Buy link is the product link attached. If you click on it is goes to that product page
